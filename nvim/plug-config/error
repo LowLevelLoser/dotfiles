@@ -1,0 +1,26 @@
+[?1049h[22;0;0t[22;0t[?1h=[H[2J]11;?[?2004h[?u[c[?25h[?25l(B[m[H[2J[23BError detected while processing /home/eddi/.config/nvim/init.vim[4]../home/eddi[23;24r[23;1H[M[1;24r[22;1H                                                                                
+
+[J[23;80H/[H[22M
+.config/nvim/vim-plug/plugins.vim:[K
+line   21:[K
+E116: Invalid arguments for function plug#[K
+Error detected while processing /home/eddi/.config/nvim/init.vim[7]../home/eddi/
+.config/nvim/plug-config/treesitter.lua:[K
+E5113: Error while calling lua chunk: /home/eddi/.config/nvim/plug-config/treesi
+tter.lua:1: module 'nvim-treesitter.configs' not found:[K
+        no field package.preload['nvim-treesitter.configs'][K
+        no file './nvim-treesitter/configs.lua'[K
+        no file '/usr/share/luajit-2.1.0-beta3/nvim-treesitter/configs.lua'[K
+        no file '/usr/local/share/lua/5.1/nvim-treesitter/configs.lua'[K
+        no file '/usr/local/share/lua/5.1/nvim-treesitter/configs/init.lua'[K
+        no file '/usr/share/lua/5.1/nvim-treesitter/configs.lua'[K
+        no file '/usr/share/lua/5.1/nvim-treesitter/configs/init.lua'[K
+        no file './nvim-treesitter/configs.so'[K
+        no file '/usr/local/lib/lua/5.1/nvim-treesitter/configs.so'[K
+        no file '/usr/lib/lua/5.1/nvim-treesitter/configs.so'[K
+        no file '/usr/local/lib/lua/5.1/loadall.so'[K
+        no file './nvim-treesitter.so'[K
+        no file '/usr/local/lib/lua/5.1/nvim-treesitter.so'[K
+        no file '/usr/lib/lua/5.1/nvim-treesitter.so'[K
+        no file '/usr/local/lib/lua/5.1/loadall.so'[K
+-- More --[K]112[1 q[?25h[?25l[?1004h[?25h[?25l[CSPACE/d/j: screen/page/line down, b/u/k: up, q: quit[?25h

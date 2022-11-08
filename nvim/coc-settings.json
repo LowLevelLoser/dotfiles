@@ -1,0 +1,11 @@
+{
+	"coc.source.OmniSharp.enable": true,
+	"coc.source.OmniSharp.triggerCharacters": ".",
+	// codele ns
+	"codeLens.enable": true,
+	//"java.referencesCodeLens.enabled": true,
+	//"java.implementationsCodeLens.enabled": true,
+	"java.completion.enabled": true,
+	"java.jdt.ls.vmargs": "-javaagent:/usr/local/share/lombok/lombok.jar"
+	// "java.jdt.ls.vmargs": "-javaagent:/usr/local/share/lombok/lombok.jar -Xbootclasspath/a:/usr/local/share/lombok/lombok.jar", // for older versions of Java
+}
