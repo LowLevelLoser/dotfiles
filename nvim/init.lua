@@ -1,6 +1,5 @@
 -- some extra options
 require('config.set')
-
 -- get plugins
 require('config.plugins')
 

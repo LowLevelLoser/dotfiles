@@ -231,4 +231,7 @@ require("lazy").setup({
         end
     },
 
+    -- minimap --
+    'stevearc/aerial.nvim',
+
 })
