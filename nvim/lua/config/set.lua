@@ -1,6 +1,8 @@
 --------------------
 --     configs    --
 --------------------
+vim.api.nvim_command('filetype plugin indent on')
+vim.api.nvim_command('syntax on')
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
@@ -25,3 +27,10 @@ vim.opt.signcolumn = "yes"
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+
+--folding
+vim.opt.foldmethod = "manual"
+vim.opt.foldnestmax = 10
+vim.opt.foldenable = false
+vim.opt.foldlevel = 2
+

@@ -19,7 +19,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     -- colorscheme --
-    'catppuccin/nvim',
+    {'catppuccin/nvim', name = "catppuccin"},
+    'folke/tokyonight.nvim',
+
 
     -- indent lines --
     'lukas-reineke/indent-blankline.nvim',
@@ -166,22 +168,22 @@ require("lazy").setup({
               end
     },
 
-    -- multiline selection --
-    'Rasukarusan/nvim-select-multi-line',
+    -- multiline edit --
+    'mg979/vim-visual-multi',
 
-    -- which key --
-      {
-        "folke/which-key.nvim",
-        config = function()
-        vim.o.timeout = true
-        vim.o.timeoutlen = 800
-        require("which-key").setup({
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-        })
-        end,
-    },
+    -- which key -- it got annoying use it if you want
+    --{
+    --    "folke/which-key.nvim",
+    --    config = function()
+    --    vim.o.timeout = true
+    --    vim.o.timeoutlen = 800
+    --    require("which-key").setup({
+    --    -- your configuration comes here
+    --    -- or leave it empty to use the default settings
+    --    -- refer to the configuration section below
+    --    })
+    --    end,
+    --},
 
     -- file tree --
     {
@@ -234,4 +236,6 @@ require("lazy").setup({
     -- minimap --
     'stevearc/aerial.nvim',
 
+    -- scroll bar --
+    'petertriho/nvim-scrollbar',
 })

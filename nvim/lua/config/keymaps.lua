@@ -36,8 +36,9 @@ vim.keymap.set("n", "<C-s>", "<cmd>w<cr>", {desc = "Save"})
 vim.keymap.set("n", "<C-q>", "<cmd>q<cr>", {desc = "Quit"})
 vim.keymap.set("n", "<leader>wq", "<cmd>wq<cr>", {desc = "Save and Quit"})
 
+-- code folding its fine for now might change later
 
 
 -- plugin specific bindings I couldn't be bothered to put in after/plugin/
-vim.api.nvim_set_keymap('n', '<leader>ml', [[ <Cmd>call sml#mode_on()<CR> ]], {noremap = true}) -- multi line
+--vim.api.nvim_set_keymap('n', '<leader>ml', [[ <Cmd>call sml#mode_on()<CR> ]], {noremap = true}) -- multi line
 
