@@ -14,9 +14,9 @@ vim.keymap.set("n", "<leader>tl", "<cmd>TroubleToggle loclist<cr>",
 vim.keymap.set("n", "<leader>qt", "<cmd>TroubleToggle quickfix<cr>",
   {silent = true, noremap = true}
 )
-vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",
-  {silent = true, noremap = true}
-)
+--vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",
+--  {silent = true, noremap = true}
+--)
 
 local actions = require("telescope.actions")
 local trouble = require("trouble.providers.telescope")

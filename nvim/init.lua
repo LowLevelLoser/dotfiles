@@ -10,7 +10,7 @@ require('config.keymaps')
 require('config.theme')
 
 -- sourcing plugin configurations
-local paths = vim.split(vim.fn.glob ('~/.config/nvim/after/plugin/*.lua'), '\n')
+local paths = vim.split(vim.fn.glob ('~/.config/nvim/after/plugin//*.lua'), '\n')
 
 for i, file in pairs(paths) do
     vim.cmd('source ' .. file)

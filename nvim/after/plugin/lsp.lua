@@ -2,6 +2,8 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
+
+
 lsp.ensure_installed({
   'tsserver',
   'rust_analyzer',
@@ -22,9 +24,9 @@ local cmp = require('cmp')
 lsp.set_preferences({
     suggest_lsp_servers = true,
     sign_icons = {
-        error = '',
-        warn = '',
-        hint = '',
+        error = '',
+        warn = '',
+        hint = '󰌶',
         info = ''
     }
 })

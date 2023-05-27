@@ -9,10 +9,33 @@ require('smart-splits').setup({
   ignored_buftypes = { 'NvimTree' },
   -- the default number of lines/columns to resize by at a time
   default_amount = 3,
-  -- whether to wrap to opposite side when cursor is at an edge
-  -- e.g. by default, moving left at the left edge will jump
-  -- to the rightmost window, and vice versa, same for up/down.
-  wrap_at_edge = true,
+  -- Desired behavior when your cursor is at an edge and you
+  -- are moving towards that same edge:
+  -- 'wrap' => Wrap to opposite side
+  -- 'split' => Create a new split in the desired direction
+  -- 'stop' => Do nothing
+  -- function => You handle the behavior yourself
+  -- NOTE: If using a function, the function will be called with
+  -- a context object with the following fields:
+  -- {
+  --    mux = {
+  --      type:'tmux'|'wezterm'|'kitty'
+  --      current_pane_id():number,
+  --      is_in_session(): boolean
+  --      current_pane_is_zoomed():boolean,
+  --      -- following methods return a boolean to indicate success or failure
+  --      current_pane_at_edge(direction:'left'|'right'|'up'|'down'):boolean
+  --      next_pane(direction:'left'|'right'|'up'|'down'):boolean
+  --      resize_pane(direction:'left'|'right'|'up'|'down'):boolean
+  --      split_pane(direction:'left'|'right'|'up'|'down',size:number|nil):boolean
+  --    },
+  --    direction = 'left'|'right'|'up'|'down',
+  --    split(), -- utility function to split current Neovim pane in the current direction
+  --    wrap(), -- utility function to wrap to opposite Neovim pane
+  -- }
+  -- NOTE: `at_edge = 'wrap'` is not supported on Kitty terminal
+  -- multiplexer, as there is no way to determine layout via the CLI
+  at_edge = 'wrap',
   -- when moving cursor between splits left or right,
   -- place the cursor on the same row of the *screen*
   -- regardless of line numbers. False by default.
@@ -32,7 +55,7 @@ require('smart-splits').setup({
     resize_keys = { 'h', 'j', 'k', 'l' },
     -- set to true to silence the notifications
     -- when entering/exiting persistent resize mode
-    silent = true,
+    silent = false,
     -- must be functions, they will be executed when
     -- entering or exiting the resize mode
     hooks = {
@@ -49,44 +72,20 @@ require('smart-splits').setup({
     'BufEnter',
     'WinEnter',
   },
-  -- enable or disable the tmux integration
-  tmux_integration = true,
-  -- disable tmux navigation if current tmux pane is zoomed
-  disable_tmux_nav_when_zoomed = true,
+  -- enable or disable a multiplexer integration;
+  -- automatically determined, unless explicitly disabled or set,
+  -- by checking the $TERM_PROGRAM environment variable,
+  -- and the $KITTY_LISTEN_ON environment variable for Kitty
+  multiplexer_integration = nil,
+  -- disable multiplexer navigation if current multiplexer pane is zoomed
+  -- this functionality is only supported on tmux and Wezterm due to kitty
+  -- not having a way to check if a pane is zoomed
+  disable_multiplexer_nav_when_zoomed = true,
+  -- Supply a Kitty remote control password if needed,
+  -- or you can also set vim.g.smart_splits_kitty_password
+  -- see https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.remote_control_password
+  kitty_password = nil,
 })
-
--- resizing splits
--- amount defaults to 3 if not specified
--- use absolute values, no + or -
--- the functions also check for a range,
--- so for example if you bind `<A-h>` to `resize_left`,
--- then `10<A-h>` will `resize_left` by `(10 * config.default_amount)`
-require('smart-splits').resize_up(amount)
-require('smart-splits').resize_down(amount)
-require('smart-splits').resize_left(amount)
-require('smart-splits').resize_right(amount)
--- moving between splits
--- pass same_row as a boolean to override the default
--- for the move_cursor_same_row config option.
--- See Configuration.
-require('smart-splits').move_cursor_up()
-require('smart-splits').move_cursor_down()
-require('smart-splits').move_cursor_left(same_row)
-require('smart-splits').move_cursor_right(same_row)
--- Swapping buffers directionally with the window to the specified direction
-require('smart-splits').swap_buf_up()
-require('smart-splits').swap_buf_down()
-require('smart-splits').swap_buf_left()
-require('smart-splits').swap_buf_right()
--- the buffer swap functions can also take an `opts` table to override the
--- default behavior of whether or not the cursor follows the buffer
-require('smart-splits').swap_buf_right({ move_cursor = true })
--- persistent resize mode
--- temporarily remap your configured resize keys to
--- smart resize left, down, up, and right, respectively,
--- press <ESC> to stop resize mode (unless you've set a different key in config)
--- resize keys also accept a range, e.e. pressing `5j` will resize down 5 times the default_amount
-require('smart-splits').start_resize_mode()
 
 -- recommended mappings
 -- resizing splits

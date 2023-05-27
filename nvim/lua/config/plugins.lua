@@ -58,9 +58,9 @@ require("lazy").setup({
     'mbbill/undotree',
 
     -- tabline --
-    {
-        'romgrk/barbar.nvim', dependencies = 'nvim-tree/nvim-web-devicons'
-    },
+    'romgrk/barbar.nvim', 
+    'nvim-tree/nvim-web-devicons',
+
 
     -- lua line --
     {
@@ -156,10 +156,10 @@ require("lazy").setup({
             auto_fold = false, -- automatically fold a file trouble list at creation
             auto_jump = {"lsp_definitions"}, -- for the given modes, automatically jump if there is only a single result
             signs = {
-                -- icons / text used for a diagnostic
-                error = "",
-                warning = "",
-                hint = "",
+                -- icons / text used for a diagnostic
+                error = "",
+                warning = "",
+                hint = "󰌶",
                 information = "",
                 other = "﫠"
             },
@@ -169,7 +169,7 @@ require("lazy").setup({
     },
 
     -- multiline edit --
-    'mg979/vim-visual-multi',
+    --'mg979/vim-visual-multi',
 
     -- which key -- it got annoying use it if you want
     --{
@@ -238,4 +238,25 @@ require("lazy").setup({
 
     -- scroll bar --
     'petertriho/nvim-scrollbar',
+
+    -- unity stuff --
+    --'OmniSharp/omnisharp-vim'
+
+    -- godot stuff --
+    'lommix/godot.nvim',
+
+    -- debugging --
+    'mfussenegger/nvim-dap',
+    'rcarriga/nvim-dap-ui',
+    'theHamsta/nvim-dap-virtual-text',
+
+    -- haskell is a fuck --
+    {
+        'mrcjkb/haskell-tools.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope.nvim', -- optional
+        },
+        branch = '1.x.x', -- recommended
+    },
 })
