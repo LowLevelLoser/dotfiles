@@ -9,26 +9,19 @@ vim.opt.termguicolors = true
 
 -- empty setup using defaults
 --require("nvim-tree").setup()
-
--- OR setup with some options
-require("nvim-tree").setup({
-  --on_attach = on_attach,
-  sort_by = "case_sensitive",
+  -- OR setup with some options
+  require("nvim-tree").setup({
+    sort_by = "case_sensitive",
     view = {
-        width = 30,
-        mappings = {
-            list = {
-                { key = "u", action = "dir_up" },
-            },
-         },
+      width = 30,
     },
-  renderer = {
-    group_empty = true,
-  },
-  filters = {
-    dotfiles = true,
-  },
-})
+    renderer = {
+      group_empty = true,
+    },
+    filters = {
+      dotfiles = true,
+    },
+  })
 
 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>")
 vim.keymap.set("n", "<leader>tc", "<cmd>NvimTreeCollapse<cr>")
