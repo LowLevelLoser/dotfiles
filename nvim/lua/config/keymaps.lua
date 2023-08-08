@@ -31,17 +31,23 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true }, {des
 -- handles splits
 vim.keymap.set("n", "|", "<cmd>vsplit<cr>")
 vim.keymap.set("n", "_", "<cmd>split<cr>")
+vim.keymap.set("n", "hv", "<cmd>wincmd L<cr>")
+vim.keymap.set("n", "vh", "<cmd>wincmd J<cr>")
 
 -- write & quit shortcuts
 vim.keymap.set("n", "<C-s>", "<cmd>w<cr>", {desc = "Save"})
 vim.keymap.set("n", "<C-q>", "<cmd>q<cr>", {desc = "Quit"})
 vim.keymap.set("n", "<leader>wq", "<cmd>x<cr>", {desc = "Save and Quit"})
 
--- code folding its fine for now might change later
 
+-- Define a keybinding to trigger code actions
+vim.api.nvim_set_keymap('n', '<leader>ft', ':Telescope<CR>', { noremap = true, silent = true })
+vim.api.nvim_buf_set_keymap(0, 'n', '<M-CR>', ':CodeActionMenu<CR>', { noremap = true, silent = true })
 -- zen toggle
 vim.keymap.set("n", "<leader>z", "<cmd>:ZenMode<CR> :IndentBlanklineToggle<CR> :Barbecue toggle<CR>")
 
+-- man pages
+vim.keymap.set("n", "mm", "<cmd>:vert Man<CR>")
 -- makdown shiz
 vim.cmd([[
 augroup MarkdownAutoCmds

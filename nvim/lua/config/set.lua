@@ -15,6 +15,12 @@ vim.o.expandtab = true
 vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
 vim.o.tabstop = 4
+
+vim.cmd([[
+  autocmd! BufEnter * if &ft ==# 'help' | wincmd L | endif
+]])
+
+
 --vim.opt.cursorline = true
 -- allowing mouse support
 --vim.o.mouse = 'nv' --> normal / visual

@@ -270,4 +270,7 @@ require("lazy").setup({
     },
     -- Grammar --
     'vigoux/LanguageTool.nvim',
+
+    { 'kosayoda/nvim-lightbulb' },
+    { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu',}
 })
