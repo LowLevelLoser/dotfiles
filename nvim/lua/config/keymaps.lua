@@ -31,8 +31,8 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true }, {des
 -- handles splits
 vim.keymap.set("n", "|", "<cmd>vsplit<cr>")
 vim.keymap.set("n", "_", "<cmd>split<cr>")
-vim.keymap.set("n", "hv", "<cmd>wincmd L<cr>")
-vim.keymap.set("n", "vh", "<cmd>wincmd J<cr>")
+vim.keymap.set("n", "<leader>hv", "<cmd>wincmd L<cr>")
+vim.keymap.set("n", "<leader>vh", "<cmd>wincmd J<cr>")
 
 -- write & quit shortcuts
 vim.keymap.set("n", "<C-s>", "<cmd>w<cr>", {desc = "Save"})
