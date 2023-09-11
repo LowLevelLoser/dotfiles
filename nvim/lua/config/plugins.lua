@@ -1,18 +1,18 @@
 ------------------------
 -- package management --
 ------------------------
- 
+
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 
 vim.opt.rtp:prepend(lazypath)
@@ -28,13 +28,13 @@ require("lazy").setup({
 
     -- tree-sitter (higlighting) --
     {
-      'nvim-treesitter/nvim-treesitter',
-      dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-     },
-      config = function()
-      pcall(require('nvim-treesitter.install').update { with_sync = true })
-      end,
+        'nvim-treesitter/nvim-treesitter',
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter-textobjects',
+        },
+        config = function()
+            pcall(require('nvim-treesitter.install').update { with_sync = true })
+        end,
     },
     'nvim-treesitter/playground',
 
@@ -49,9 +49,9 @@ require("lazy").setup({
 
     -- telescope --
     {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
--- or                              , branch = '0.1.1',
-      dependencies = { 'nvim-lua/plenary.nvim' }
+        'nvim-telescope/telescope.nvim', tag = '0.1.1',
+        -- or                              , branch = '0.1.1',
+        dependencies = { 'nvim-lua/plenary.nvim' }
     },
 
     -- undotree --
@@ -71,9 +71,9 @@ require("lazy").setup({
 
     -- lsp zero --
     {
-     'VonHeikemen/lsp-zero.nvim',
-      branch = 'v1.x',
-      dependencies = {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v1.x',
+        dependencies = {
             -- LSP Support
             {'neovim/nvim-lspconfig'},             -- Required
             {'williamboman/mason.nvim'},           -- Optional
@@ -112,42 +112,42 @@ require("lazy").setup({
 
     -- diagnostics with trouble --
     {
-      "folke/trouble.nvim",
-      requires = "nvim-tree/nvim-web-devicons",
-      config = function()
-        require("trouble").setup {
-          -- your configuration comes here
-          -- or leave it empty to use the default settings
-          -- refer to the configuration section below
-             position = "bottom", -- position of the list can be: bottom, top, left, right
-             height = 10, -- height of the trouble list when position is top or bottom
-             width = 50, -- width of the list when position is left or right
-             icons = true, -- use devicons for filenames
-             mode = "workspace_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
-             fold_open = "", -- icon used for open folds
-             fold_closed = "", -- icon used for closed folds
-             group = true, -- group results by file
-             padding = true, -- add an extra new line on top of the list
-             action_keys = { -- key mappings for actions in the trouble list
-             -- map to {} to remove a mapping, for example:
-             -- close = {},
-             close = "q", -- close the list
-             cancel = "<esc>", -- cancel the preview and get back to your last window / buffer / cursor
-             refresh = "r", -- manually refresh
-             jump = {"<cr>", "<tab>"}, -- jump to the diagnostic or open / close folds
-             open_split = { "<c-x>" }, -- open buffer in new split
-             open_vsplit = { "<c-v>" }, -- open buffer in new vsplit
-             open_tab = { "<c-t>" }, -- open buffer in new tab
-             jump_close = {"o"}, -- jump to the diagnostic and close the list
-             toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
-             toggle_preview = "P", -- toggle auto_preview
-             hover = "K", -- opens a small popup with the full multiline message
-             preview = "p", -- preview the diagnostic location
-             close_folds = {"zM", "zm"}, -- close all folds
-             open_folds = {"zR", "zr"}, -- open all folds
-             toggle_fold = {"zA", "za"}, -- toggle fold of current file
-             previous = "k", -- previous item
-             next = "j" -- next item
+        "folke/trouble.nvim",
+        requires = "nvim-tree/nvim-web-devicons",
+        config = function()
+            require("trouble").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+                position = "bottom", -- position of the list can be: bottom, top, left, right
+                height = 10, -- height of the trouble list when position is top or bottom
+                width = 50, -- width of the list when position is left or right
+                icons = true, -- use devicons for filenames
+                mode = "workspace_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
+                fold_open = "", -- icon used for open folds
+                fold_closed = "", -- icon used for closed folds
+                group = true, -- group results by file
+                padding = true, -- add an extra new line on top of the list
+                action_keys = { -- key mappings for actions in the trouble list
+                -- map to {} to remove a mapping, for example:
+                -- close = {},
+                close = "q", -- close the list
+                cancel = "<esc>", -- cancel the preview and get back to your last window / buffer / cursor
+                refresh = "r", -- manually refresh
+                jump = {"<cr>", "<tab>"}, -- jump to the diagnostic or open / close folds
+                open_split = { "<c-x>" }, -- open buffer in new split
+                open_vsplit = { "<c-v>" }, -- open buffer in new vsplit
+                open_tab = { "<c-t>" }, -- open buffer in new tab
+                jump_close = {"o"}, -- jump to the diagnostic and close the list
+                toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
+                toggle_preview = "P", -- toggle auto_preview
+                hover = "K", -- opens a small popup with the full multiline message
+                preview = "p", -- preview the diagnostic location
+                close_folds = {"zM", "zm"}, -- close all folds
+                open_folds = {"zR", "zr"}, -- open all folds
+                toggle_fold = {"zA", "za"}, -- toggle fold of current file
+                previous = "k", -- previous item
+                next = "j" -- next item
             },
             indent_lines = true, -- add an indent guide below the fold icons
             auto_open = false, -- automatically open the list when you have diagnostics
@@ -164,113 +164,131 @@ require("lazy").setup({
                 other = "﫠"
             },
             use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
-                }
-              end
-    },
+        }
+    end
+},
 
-    -- multiline edit --
-    --'mg979/vim-visual-multi',
+-- multiline edit --
+--'mg979/vim-visual-multi',
 
-    -- which key -- it got annoying use it if you want
-    --{
+-- which key -- it got annoying use it if you want
+--{
     --    "folke/which-key.nvim",
     --    config = function()
-    --    vim.o.timeout = true
-    --    vim.o.timeoutlen = 800
-    --    require("which-key").setup({
-    --    -- your configuration comes here
-    --    -- or leave it empty to use the default settings
-    --    -- refer to the configuration section below
-    --    })
-    --    end,
-    --},
+        --    vim.o.timeout = true
+        --    vim.o.timeoutlen = 800
+        --    require("which-key").setup({
+            --    -- your configuration comes here
+            --    -- or leave it empty to use the default settings
+            --    -- refer to the configuration section below
+            --    })
+            --    end,
+            --},
 
-    -- file tree --
-    {
-        'nvim-tree/nvim-tree.lua',
-        requires = {
-          'nvim-tree/nvim-web-devicons', -- optional, for file icons
-        },
-    },
+            -- file tree --
+            {
+                'nvim-tree/nvim-tree.lua',
+                requires = {
+                    'nvim-tree/nvim-web-devicons', -- optional, for file icons
+                },
+            },
 
-    -- smart splits --
-    'mrjones2014/smart-splits.nvim',
+            -- smart splits --
+            'mrjones2014/smart-splits.nvim',
 
-    -- notifications --
-    --'rcarriga/nvim-notify',
+            -- notifications --
+            --'rcarriga/nvim-notify',
 
-    -- context --
-    {
-      "utilyre/barbecue.nvim",
-      name = "barbecue",
-      version = "*",
-      dependencies = {
-        "SmiteshP/nvim-navic",
-        "nvim-tree/nvim-web-devicons", -- optional dependency
-      },
-      opts = {
-        -- configurations go here
-      },
-    },
+            -- context --
+            {
+                "utilyre/barbecue.nvim",
+                name = "barbecue",
+                version = "*",
+                dependencies = {
+                    "SmiteshP/nvim-navic",
+                    "nvim-tree/nvim-web-devicons", -- optional dependency
+                },
+                opts = {
+                    -- configurations go here
+                },
+            },
 
-    -- vimpeccable (useful for configuration stuffs) --
-    'svermeulen/vimpeccable',
+            -- vimpeccable (useful for configuration stuffs) --
+            'svermeulen/vimpeccable',
 
-    -- terminal toggle --
-    {
-  -- amongst your other plugins
-        {'akinsho/toggleterm.nvim', version = "*", config = true}
-  -- or
-  --{'akinsho/toggleterm.nvim', version = "*", opts = {--[[ things you want to change go here]]}}
-    },
+            -- terminal toggle --
+            {
+                -- amongst your other plugins
+                {'akinsho/toggleterm.nvim', version = "*", config = true}
+                -- or
+                --{'akinsho/toggleterm.nvim', version = "*", opts = {--[[ things you want to change go here]]}}
+            },
 
-    -- custom start screen --
-    {
-    'goolord/alpha-nvim',
-        requires = { 'nvim-tree/nvim-web-devicons' },
-        config = function ()
-            require'alpha'.setup(require'alpha.themes.startify'.config)
-        end
-    },
+            -- custom start screen --
+            {
+                'goolord/alpha-nvim',
+                requires = { 'nvim-tree/nvim-web-devicons' },
+                config = function ()
+                    require'alpha'.setup(require'alpha.themes.startify'.config)
+                end
+            },
 
-    -- minimap --
-    'stevearc/aerial.nvim',
+            -- minimap --
+            'stevearc/aerial.nvim',
 
-    -- scroll bar --
-    'petertriho/nvim-scrollbar',
+            -- scroll bar --
+            'petertriho/nvim-scrollbar',
 
-    -- unity stuff --
-    --'OmniSharp/omnisharp-vim'
+            -- unity stuff --
+            --'OmniSharp/omnisharp-vim'
 
-    -- godot stuff --
-    'lommix/godot.nvim',
+            -- godot stuff --
+            'lommix/godot.nvim',
 
-    -- debugging --
-    'mfussenegger/nvim-dap',
-    'rcarriga/nvim-dap-ui',
-    'theHamsta/nvim-dap-virtual-text',
+            -- debugging --
+            'mfussenegger/nvim-dap',
+            'rcarriga/nvim-dap-ui',
+            'theHamsta/nvim-dap-virtual-text',
 
-    -- haskell is a fuck --
-    {
-        'mrcjkb/haskell-tools.nvim',
-        requires = {
-            'nvim-lua/plenary.nvim',
-            'nvim-telescope/telescope.nvim', -- optional
-        },
-        branch = '1.x.x', -- recommended
-    },
-    -- zen mode --
-    {
-        "folke/zen-mode.nvim",
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        }
-    },
-    -- Grammar --
-    'vigoux/LanguageTool.nvim',
+            -- haskell is a fuck --
+            {
+                'mrcjkb/haskell-tools.nvim',
+                requires = {
+                    'nvim-lua/plenary.nvim',
+                    'nvim-telescope/telescope.nvim', -- optional
+                },
+                branch = '1.x.x', -- recommended
+            },
+            -- zen mode --
+            {
+                "folke/zen-mode.nvim",
+                opts = {
+                    -- your configuration comes here
+                    -- or leave it empty to use the default settings
+                    -- refer to the configuration section below
+                }
+            },
+            -- Grammar --
+            'vigoux/LanguageTool.nvim',
 
-    { 'kosayoda/nvim-lightbulb' },
-    { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu',}
-})
+            { 'kosayoda/nvim-lightbulb' },
+            { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu',},
+
+            -- Git --
+            'kdheepak/lazygit.nvim',
+
+            -- Refactoring --
+            {
+                "ThePrimeagen/refactoring.nvim",
+                dependencies = {
+                    "nvim-lua/plenary.nvim",
+                    "nvim-treesitter/nvim-treesitter",
+                },
+                config = function()
+                    require("refactoring").setup()
+                end,
+            },
+
+            -- readline --
+            'linty-org/readline.nvim'
+        })
