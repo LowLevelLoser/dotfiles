@@ -35,7 +35,7 @@ vim.keymap.set("n", "<leader>hv", "<cmd>wincmd L<cr>")
 vim.keymap.set("n", "<leader>vh", "<cmd>wincmd J<cr>")
 
 -- write & quit shortcuts
-vim.keymap.set("x", "<C-s>", "<cmd>w<cr>", {desc = "Save"})
+vim.keymap.set("n", "<C-s>", "<cmd>w<cr>", {desc = "Save"})
 vim.keymap.set("n", "<C-q>", "<cmd>q<cr>", {desc = "Quit"})
 vim.keymap.set("n", "<leader>wq", "<cmd>x<cr>", {desc = "Save and Quit"})
 
