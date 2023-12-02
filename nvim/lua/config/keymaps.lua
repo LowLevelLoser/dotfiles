@@ -52,20 +52,25 @@ vim.keymap.set("n", "mm", "<cmd>:vert Man<CR>")
 vim.cmd([[
 augroup MarkdownAutoCmds
   autocmd!
-  autocmd FileType markdown inoremap ;n ---<Enter><Enter>
+  autocmd FileType markdown inoremap ;n <Enter>---<Enter>
   autocmd FileType markdown inoremap ;b ****<++><Esc>F*hi
   autocmd FileType markdown inoremap ;s ~~~~<++><Esc>F~hi
-  autocmd FileType markdown inoremap ;e **<++><Esc>F*i
+  autocmd FileType markdown inoremap ;e **<Esc>F*i
   autocmd FileType markdown inoremap ;h ====<Esc>F=hi
-  autocmd FileType markdown inoremap ;i ![](<++>)<++><Esc>F[a
-  autocmd FileType markdown inoremap ;a [](<++>)<++><Esc>F[a
-  autocmd FileType markdown inoremap ;1 #<Space><Enter><++><Esc>kA
-  autocmd FileType markdown inoremap ;2 ##<Space><Enter><++><Esc>kA
-  autocmd FileType markdown inoremap ;3 ###<Space><Enter><++><Esc>kA
+  autocmd FileType markdown inoremap ;i ![]()<Esc>F[a
+  autocmd FileType markdown inoremap ;a []()<Esc>F[a
+  autocmd FileType markdown inoremap ;1 #<Space><Enter><Esc>kA
+  autocmd FileType markdown inoremap ;2 ##<Space><Enter><Esc>kA
+  autocmd FileType markdown inoremap ;3 ###<Space><Enter><Esc>kA
+  autocmd FileType markdown inoremap ;4 ####<Space><Enter><Esc>kA
+  autocmd FileType markdown inoremap ;5 #####<Space><Enter><Esc>kA
+  autocmd FileType markdown inoremap ;6 ######<Space><Enter><Esc>kA
   autocmd FileType markdown inoremap ;l --------<Enter>
+  autocmd FileType markdown inoremap ;t \|word\|<Enter>\|----\|<Enter>\|entry\|<Enter>
 
+  autocmd FileType markdown nnoremap t lvf\|y<End>pj
   autocmd FileType markdown nnoremap <buffer> <F4> :!pandoc % -o %:r.pdf<CR><CR>
-  autocmd FileType markdown nnoremap <buffer> <F5> :!zathura %:r.pdf<CR><CR>
+  autocmd FileType markdown nnoremap <buffer> <F5> :!mupdf %:r.pdf<CR><CR>
 augroup END
 ]])
 

@@ -2,10 +2,8 @@
 require('config.set')
 -- get plugins
 require('config.plugins')
-
 -- get keymaps
 require('config.keymaps')
-
 -- theme
 require('config.theme')
 
