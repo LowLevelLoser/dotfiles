@@ -24,9 +24,8 @@ require("lazy").setup({
 
 
     -- indent lines --
-    {
-        "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {}
-    },
+    'lukas-reineke/indent-blankline.nvim',
+
     -- tree-sitter (higlighting) --
     {
         'nvim-treesitter/nvim-treesitter',
@@ -289,13 +288,14 @@ require("lazy").setup({
                     require("refactoring").setup()
                 end,
             },
-            -- live markdown --
+
+            -- readline --
+            --'linty-org/readline.nvim'
+            --live mark down--
             {
                 "iamcco/markdown-preview.nvim",
                 cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
                 ft = { "markdown" },
                 build = function() vim.fn["mkdp#util#install"]() end,
             },
-            -- readline --
-            --'linty-org/readline.nvim'
         })

@@ -53,28 +53,28 @@ vim.cmd([[
 augroup MarkdownAutoCmds
   autocmd!
   autocmd FileType markdown inoremap ;n <Enter>---<Enter>
-  autocmd FileType markdown inoremap ;b ****<++><Esc>F*hi
-  autocmd FileType markdown inoremap ;s ~~~~<++><Esc>F~hi
+  autocmd FileType markdown inoremap ;b ****<Esc>F*hi
+  autocmd FileType markdown inoremap ;s ~~~~<Esc>F~hi
   autocmd FileType markdown inoremap ;e **<Esc>F*i
   autocmd FileType markdown inoremap ;h ====<Esc>F=hi
   autocmd FileType markdown inoremap ;i ![]()<Esc>F[a
-  autocmd FileType markdown inoremap ;a []()<Esc>F[a
+  autocmd FileType markdown inoremap ;l []()<Esc>F[a
   autocmd FileType markdown inoremap ;1 #<Space><Enter><Esc>kA
   autocmd FileType markdown inoremap ;2 ##<Space><Enter><Esc>kA
   autocmd FileType markdown inoremap ;3 ###<Space><Enter><Esc>kA
   autocmd FileType markdown inoremap ;4 ####<Space><Enter><Esc>kA
   autocmd FileType markdown inoremap ;5 #####<Space><Enter><Esc>kA
   autocmd FileType markdown inoremap ;6 ######<Space><Enter><Esc>kA
-  autocmd FileType markdown inoremap ;l --------<Enter>
-  autocmd FileType markdown inoremap ;t \|word\|<Enter>\|----\|<Enter>\|entry\|<Enter>
+  autocmd FileType markdown inoremap ;a --------<Enter>
+  autocmd FileType markdown inoremap ;t \|label\|<Enter>\|-----\|<Enter>\|entry\|<Enter>
 
-  autocmd FileType markdown nnoremap t lvf\|y<End>pj
+  autocmd FileType markdown nnoremap t <End>vF\|ly<End>pj
+  "autocmd FileType markdown nnoremap <expr> t ":<C-u>execute 'normal! ' . v:count . 't' . 't<End>vF\\\\|ly<End>pj'<CR>"
+  "autocmd FileType markdown nnoremap <expr> t ":<C-u>execute 'normal! ' . v:count1 . 't\\|vF\\\\|lyj'<CR>"
   autocmd FileType markdown nnoremap <buffer> <F4> :!pandoc % -o %:r.pdf<CR><CR>
   autocmd FileType markdown nnoremap <buffer> <F5> :!mupdf %:r.pdf<CR><CR>
 augroup END
 ]])
-
-
 -- autocmd FileType markdownpoop nnoremap <buffer> <F5> :!pandoc <C-r>% -o <C-r>%.pdf<CR><CR>
 --
 -- plugin specific bindings I couldn't be bothered to put in after/plugin/
