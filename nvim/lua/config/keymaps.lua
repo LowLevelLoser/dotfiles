@@ -10,7 +10,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-
 -- greatest remap ever: According to the primagen
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
@@ -23,12 +22,17 @@ vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 -- replace
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],{desc = "replace string"})
 vim.keymap.set("v", "<leader>s", "\"ly:%s/<C-r>l/<C-r>l/gI<Left><Left><Left>", {desc = "replace string"})
---vim.keymap.set("v", "<leader>s", [[:%s/<C-r>/<C-r>/gI<Left><Left><Left>]],{desc = "replace string"})
+vim.keymap.set("v", "<leader>r", [[:s/\<word\>/word/gI<C-f><Esc>:%s/\<word\>/word/gI<Left><Left><Left>]],{desc = "replace string"})
+-- look up
+vim.keymap.set("v", "<leader>x", '\"ly:silent ! xdg-open https://search.brave.com/search?q="<C-r>l"', {desc = "look up"})
+vim.keymap.set("v", "<leader>m", '\"ly:silent ! xdg-open "https://en.wikipedia.org/wiki/<C-r>l"', {desc = "look up wikipedia"})
+--vim.keymap.set('v', '<leader>x', "[[\"ly:lua vim.fn.setreg('l', vim.fn.getreg('l'):gsub('%s', '+'))<CR>:silent ! xdg-open https://search.brave.com/search?q=<C-r>l]]", { desc = "look up"})
 
+--https://en.wikipedia.org/wiki/
 -- auto bash chmod
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true }, {desc = "make bash script executable"})
 
--- handles splits
+-- handles splits 
 vim.keymap.set("n", "|", "<cmd>vsplit<cr>")
 vim.keymap.set("n", "_", "<cmd>split<cr>")
 vim.keymap.set("n", "<leader>hv", "<cmd>wincmd L<cr>")
@@ -44,7 +48,7 @@ vim.keymap.set("n", "<leader>wq", "<cmd>x<cr>", {desc = "Save and Quit"})
 vim.api.nvim_set_keymap('n', '<leader>ft', ':Telescope<CR>', { noremap = true, silent = true })
 vim.api.nvim_buf_set_keymap(0, 'n', '<M-CR>', ':CodeActionMenu<CR>', { noremap = true, silent = true })
 -- zen toggle
-vim.keymap.set("n", "<leader>z", "<cmd>:ZenMode<CR> :IndentBlanklineToggle<CR> :Barbecue toggle<CR>")
+vim.keymap.set("n", "<leader>z", "<cmd>:ZenMode<CR> :IBLToggle<CR> :Barbecue toggle<CR>")
 
 -- man pages
 vim.keymap.set("n", "mm", "<cmd>:vert Man<CR>")

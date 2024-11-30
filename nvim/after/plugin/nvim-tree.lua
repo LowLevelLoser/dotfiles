@@ -14,6 +14,7 @@ vim.opt.termguicolors = true
     sort_by = "case_sensitive",
     view = {
       width = 30,
+      side = "right",
     },
     renderer = {
       group_empty = true,
@@ -22,6 +23,8 @@ vim.opt.termguicolors = true
       dotfiles = true,
     },
   })
+
+--vim.g.nvim-tree.view.side = "right"
 
 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>")
 vim.keymap.set("n", "<leader>tc", "<cmd>NvimTreeCollapse<cr>")
